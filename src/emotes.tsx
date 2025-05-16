@@ -99,10 +99,8 @@ export default function Emotes() {
   );
 
   return (
-    <div className="emotes w-full px-4 py-6 mx-auto flex flex-col md:flex-row md:items-start items-center justify-center gap-4 md:gap-8 max-w-full md:max-w-6xl">
-      <div
-        ref={containerRef}
-        className="relative order-1 md:order-2 w-full md:flex-1 h-[300px] md:h-[550px] bg-[#1a1a1a] overflow-hidden border border-gray-700 rounded-lg shadow-lg mb-4 md:mb-0">
+    <div className="emotes">
+      <div ref={containerRef}>
         {emotes.map((emote) => (
           <div
             key={emote.id}

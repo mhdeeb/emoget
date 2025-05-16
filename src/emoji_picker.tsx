@@ -1,40 +1,37 @@
-// import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
-// import { useState, useEffect } from "react";
+import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
+import { Input } from "@/components/ui/input";
 import "./emoji_picker.css";
+import "@/index.css";
 
-// const handleEmojiClick = (emoji: EmojiClickData) => {
-//   //   sendMessage(emoji.emoji);
-//   console.log(emoji.emoji);
-// };
+const handleEmojiClick = (emoji: EmojiClickData) => {
+  //   sendMessage(emoji.emoji);
+  console.log(emoji.emoji);
+};
 
 export default function EmojiPickerComponent() {
-  // const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const checkMobile = () => {
-  //     setIsMobile(window.innerWidth < 768);
-  //   };
-
-  //   // Initial check
-  //   checkMobile();
-
-  //   // Listen for resize events
-  //   window.addEventListener("resize", checkMobile);
-
-  //   return () => {
-  //     window.removeEventListener("resize", checkMobile);
-  //   };
-  // }, []);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      // sendMessage(event.currentTarget.value);
+      event.currentTarget.value = "";
+    }
+  };
 
   return (
     <div className="emoji-picker">
-      Hello
-      {/* <EmojiPicker
+      <div data-tauri-drag-region className="drag-region"></div>
+      <EmojiPicker
         onEmojiClick={handleEmojiClick}
         theme={Theme.DARK}
-        width={isMobile ? "100%" : 320}
-        height={500}
-      /> */}
+        width={"100%"}
+        height={543}
+      />
+      <Input
+        className="w-full"
+        name="emoji"
+        type="text"
+        placeholder="send message"
+        onKeyDown={handleKeyDown}
+      />
     </div>
   );
 }

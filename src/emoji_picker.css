@@ -1,4 +1,23 @@
+:root {
+    color-scheme: dark;
+}
+
 .emoji-picker {
     background-color: #1a1a1a;
-    color: #0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body:has(.emoji-picker) {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0.95;
+}
+
+.drag-region {
+    height: 20px;
+    width: 100%;
 }
