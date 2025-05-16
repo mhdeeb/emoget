@@ -47,12 +47,12 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
                 const buffer = await event.data.arrayBuffer();
                 const view = new Uint8Array(buffer);
                 const userId = view[0];
-                const emote = view.slice(1);
+                // const emote = view.slice(1);
 
                 if (userId === 0) {
                     console.log("Emote sent");
                 } else {
-                    const emoji = new TextDecoder().decode(emote);
+                    // const emoji = new TextDecoder().decode(emote);
                     set(state => ({ receivedCount: state.receivedCount + 1 }));
                 }
             };
@@ -129,7 +129,7 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
     setMessageHandler: (handler: (userId: number, emoji: string) => void) => {
         const { socket } = get();
         if (socket) {
-            const originalHandler = socket.onmessage;
+            // const originalHandler = socket.onmessage;
 
             socket.onmessage = async (event: MessageEvent) => {
                 const buffer = await event.data.arrayBuffer();

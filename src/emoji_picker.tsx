@@ -5,7 +5,7 @@ import "@/index.css";
 import { useWebSocketStore } from "./lib/websocket-service";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, X } from "lucide-react";
+import { X } from "lucide-react";
 
 export default function EmojiPickerComponent() {
   const { sendEmote, status, receivedCount } = useWebSocketStore();
