@@ -5,6 +5,8 @@ import Picker from "./emoji_picker";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useWebSocketStore } from "./lib/websocket-service";
 
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
 const webSocketStore = useWebSocketStore.getState();
 webSocketStore.connect();
 
