@@ -2,16 +2,18 @@ import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
 import { Input } from "@/components/ui/input";
 import "./emoji_picker.css";
 import "@/index.css";
-
-const handleEmojiClick = (emoji: EmojiClickData) => {
-  //   sendMessage(emoji.emoji);
-  console.log(emoji.emoji);
-};
+import { useWebSocketStore } from "./lib/websocket-service";
 
 export default function EmojiPickerComponent() {
+  const { sendEmote } = useWebSocketStore();
+
+  const handleEmojiClick = (emoji: EmojiClickData) => {
+    sendEmote(emoji.emoji);
+  };
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      // sendMessage(event.currentTarget.value);
+      sendEmote(event.currentTarget.value);
       event.currentTarget.value = "";
     }
   };

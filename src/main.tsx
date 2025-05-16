@@ -3,6 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Picker from "./emoji_picker";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useWebSocketStore } from "./lib/websocket-service";
+
+const webSocketStore = useWebSocketStore.getState();
+webSocketStore.connect();
+
+window.addEventListener("beforeunload", () => {
+  webSocketStore.disconnect();
+});
 
 const router = createBrowserRouter([
   {
