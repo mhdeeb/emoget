@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import "./emoji_picker.css";
 import "@/index.css";
 import { useWebSocketStore } from "./lib/websocket-service";
+import { invoke } from "@tauri-apps/api/core";
 
 export default function EmojiPickerComponent() {
   const { sendEmote, status, receivedCount } = useWebSocketStore();
@@ -16,6 +17,12 @@ export default function EmojiPickerComponent() {
       sendEmote(event.currentTarget.value);
       event.currentTarget.value = "";
     }
+  };
+
+  const handleHide = () => {
+    invoke("hide_picker_window").catch((err: Error) => {
+      console.error("Failed to hide window using Tauri command:", err);
+    });
   };
 
   return (
@@ -40,6 +47,7 @@ export default function EmojiPickerComponent() {
             Received: {receivedCount}
           </div>
         </div>
+        <button onClick={handleHide}>x</button>
       </div>
       <EmojiPicker
         onEmojiClick={handleEmojiClick}
