@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import "./emotes.css";
 
 const MAX_EMOTES = 1000;
 const EMOJI_LIFETIME = 3 * 1000;
@@ -98,47 +99,14 @@ export default function Emotes() {
   );
 
   return (
-    <div className="w-full px-4 py-6 mx-auto flex flex-col md:flex-row md:items-start items-center justify-center gap-4 md:gap-8 max-w-full md:max-w-6xl">
+    <div className="emotes w-full px-4 py-6 mx-auto flex flex-col md:flex-row md:items-start items-center justify-center gap-4 md:gap-8 max-w-full md:max-w-6xl">
       <div
         ref={containerRef}
         className="relative order-1 md:order-2 w-full md:flex-1 h-[300px] md:h-[550px] bg-[#1a1a1a] overflow-hidden border border-gray-700 rounded-lg shadow-lg mb-4 md:mb-0">
-        <style>{`
-          @keyframes float-up {
-            0% {
-              transform: translateY(0);
-              opacity: 0;
-            }
-            5% {
-              opacity: 1;
-            }
-            85% {
-              opacity: 1;
-            }
-            100% {
-              transform: translateY(-400%);
-              opacity: 0;
-            }
-          }
-
-          .emoji-animate {
-            position: absolute;
-            animation-name: float-up;
-            animation-timing-function: linear;
-            animation-fill-mode: forwards;
-            will-change: transform, opacity;
-          }
-
-          @media (max-width: 768px) {
-            .emoji-animate {
-              font-size: 1.5rem; /* Smaller emojis on mobile */
-            }
-          }
-        `}</style>
-
         {emotes.map((emote) => (
           <div
             key={emote.id}
-            className="emoji-animate text-4xl"
+            className="emoji-animate"
             style={{
               left: `${emote.startX}px`,
               bottom: 0,

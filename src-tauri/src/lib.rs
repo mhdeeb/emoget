@@ -7,6 +7,10 @@ pub fn run() {
         .setup(|app| {
             let window = app.get_webview_window("main").unwrap();
             let _ = window.set_ignore_cursor_events(true);
+            // let webview_url = tauri::WebviewUrl::App("picker.html".into());
+            // tauri::WebviewWindowBuilder::new(app, "picker", webview_url.clone())
+            //     .title("EmoGet")
+            //     .build()?;
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![])
