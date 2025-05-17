@@ -5,7 +5,7 @@ import "@/index.css";
 import { useWebSocketStore } from "./lib/websocket-service";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { X, Menu } from "lucide-react";
 
 export default function EmojiPickerComponent() {
   const { sendEmote, status, receivedCount } = useWebSocketStore();
@@ -29,7 +29,9 @@ export default function EmojiPickerComponent() {
 
   return (
     <div className="emoji-picker">
-      <div data-tauri-drag-region className="drag-region"></div>
+      <div data-tauri-drag-region className="drag-region">
+        <Menu className="w-full h-full pointer-events-none" />
+      </div>
       <div className="w-full flex items-center justify-between py-2 pr-2 text-white select-none text-sm md:hidden">
         <div className="flex items-center gap-2 px-4 py-2 bg-sidebar-primary/20 rounded-lg">
           <div className="flex items-center gap-1.5">

@@ -12,6 +12,7 @@ fn hide_picker_window(app_handle: tauri::AppHandle) {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             init_system_tray(app.app_handle()).unwrap();
@@ -20,11 +21,9 @@ pub fn run() {
             let webview_url = tauri::WebviewUrl::App("/picker".into());
             tauri::WebviewWindowBuilder::new(app, "picker", webview_url.clone())
                 .title("EmoGet")
-                .inner_size(400.0, 600.0)
-                .resizable(false)
+                .inner_size(400.0, 650.0)
                 .focused(false)
                 .decorations(false)
-                .skip_taskbar(true)
                 .transparent(true)
                 .always_on_top(true)
                 .build()?;
