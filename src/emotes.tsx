@@ -73,7 +73,7 @@ export default function Emotes() {
 
   const addNewEmote = useCallback(
     (userId: number, emoji: string) => {
-      const containerWidth = containerRef.current?.clientWidth || 500;
+      const containerWidth = containerRef.current?.clientWidth ?? 500;
 
       const margin = isMobile ? 20 : 40;
       const startX = margin + Math.random() * (containerWidth - margin * 2);

@@ -56,18 +56,22 @@ export default function EmojiPickerComponent() {
           <X />
         </Button>
       </div>
-      <EmojiPicker
-        onEmojiClick={handleEmojiClick}
-        theme={Theme.DARK}
-        width={"100%"}
-        height={490}
-      />
-      <Input
-        name="emoji"
-        type="text"
-        placeholder="send message"
-        onKeyDown={handleKeyDown}
-      />
+      <div className="w-full p-2">
+        <EmojiPicker
+          onEmojiClick={handleEmojiClick}
+          theme={Theme.DARK}
+          width={"100%"}
+          height={450}
+        />
+      </div>
+      <div className="w-full p-2">
+        <Input
+          name="emoji"
+          type="text"
+          placeholder="send message"
+          onKeyDown={handleKeyDown}
+        />
+      </div>
     </div>
   );
 }
